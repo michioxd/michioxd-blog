@@ -14,20 +14,20 @@ const blog = (await getCollection("blog"))
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
-    <h4 class="animate font-semibold text-black dark:text-white">
+    <h4 class="font-semibold text-black dark:text-white">
       hi there, i'm michioxd <span class="text-xl">👋</span>
     </h4>
     <div class="space-y-16">
       <section>
         <article class="space-y-4">
-          <p class="animate">
+          <p class="">
             this is my personal blog where i write about web development, tech
             and other things that interest me. i am a self-taught developer
           </p>
         </article>
       </section>
 
-      <section class="animate space-y-6">
+      <section class="space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">latest posts</h5>
           <Link href="/blog"> see all posts </Link>
@@ -43,7 +43,7 @@ const blog = (await getCollection("blog"))
         </ul>
       </section>
 
-      <section class="animate space-y-4">
+      <section class="space-y-4">
         <h5 class="font-semibold text-black dark:text-white">contact</h5>
         <article>
           <p>
