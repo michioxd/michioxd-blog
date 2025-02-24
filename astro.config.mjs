@@ -10,18 +10,5 @@ export default defineConfig({
     shikiConfig: {
       theme: "dark-plus"
     }
-  },
-  vite: {
-    build: {
-      minify: "terser",
-      terserOptions: {
-        parse: {
-          html5_comments: false,
-        },
-        format: {
-          comments: false
-        }
-      }
-    }
   }
 });
