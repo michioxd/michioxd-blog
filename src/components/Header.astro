@@ -1,6 +1,7 @@
 ---
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
+import Icon from "@components/Icon.astro";
 import { SITE } from "@consts";
 ---
 
@@ -8,26 +9,14 @@ import { SITE } from "@consts";
   <Container>
     <div class="flex flex-wrap gap-y-2 justify-between">
       <Link href="/" underline={false}>
-        <div class="font-semibold">
-          {SITE.NAME}
+        <div class="font-normal text-sm/4 flex gap-3 items-center">
+          <Icon />{SITE.NAME}
         </div>
       </Link>
-      <nav class="flex gap-1">
-        <Link href="/blog">
-          blog
-        </Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/work">
-          work
-        </Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/projects">
-          projects
-        </Link>
+      <nav class="flex gap-1 text-sm/4">
+        <Link href="/blog"> all blog </Link>
+        {"/"}
+        <Link href="https://michioxd.ch"> website </Link>
       </nav>
     </div>
   </Container>
