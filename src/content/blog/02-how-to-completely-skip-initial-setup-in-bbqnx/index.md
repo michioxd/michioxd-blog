@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: How to completely skip (bypass) initial setup in BlackBerry OS (10/Tablet OS)"
-description: "This tutorial will guide you modify the device's firmware, allowing it to completely bypass the mandatory setup and boot directly to the home screen."
+description: "This tutorial will guide you through modifying the device's firmware, allowing it to completely bypass the mandatory setup and boot directly to the home screen."
 date: "Jul 25 2025"
 ---
 
@@ -8,14 +8,14 @@ date: "Jul 25 2025"
 
 For enthusiasts and owners of legacy BlackBerry 10 devices or the BlackBerry PlayBook, the shutdown of BlackBerry's servers in 2022 presented a major problem. After a security wipe or factory reset, it became impossible to complete the initial setup, effectively turning these classic devices into paperweights.
 
-This tutorial will guide you modify the device's firmware, allowing it to completely bypass the mandatory setup and boot directly to the home screen.
+This tutorial will guide you through modifying the device's firmware, allowing it to completely bypass the mandatory setup and boot directly to the home screen.
 
 **Disclaimer:** This process involves modifying core operating system files. It is intended for advanced users. Proceed with caution and at your own risk. An incorrect step could potentially "brick" your device, rendering it unusable. I am not responsible for any damage to your device.
 
 ### What devices have been tested?
 
 - BlackBerry PlayBook 3G/HSPA+ running 2.1.0.1917.
-- BlackBerry Z30 running 10.3.3.3216 downgraded to [10.2.1.1057](https://web.archive.org/web/20131115133006/http://downloads-us.blackberry.com/upr/developers/downloads/Autoload-STA100-2-10.2.1.1057.exe) but stucking on the setup screen (bypassed by this tutorial).
+- BlackBerry Z30 running 10.3.3.3216 downgraded to [10.2.1.1057](https://web.archive.org/web/20131115133006/http://downloads-us.blackberry.com/upr/developers/downloads/Autoload-STA100-2-10.2.1.1057.exe) but stuck on the setup screen (bypassed by this tutorial).
 
 ### Before you start
 
@@ -48,14 +48,14 @@ After you have extracted the files, you will have two `.signed` files in the sam
 
 ![Extracted files](./01.png)
 
-To easily work with the files, I recommend renaming them to something more descriptive. I will rename them to `OS.signed` and `Radio.signed`.
+To make working with the files easier, I recommend renaming them to something more descriptive. I will rename them to `OS.signed` and `Radio.signed`.
 
 ### Step 2: Unpack the Core OS File
 
 The `.signed` file containing the OS is a QCFM archive. We will use the `bb10mt` command-line tool to unpack it.
 
-1. Open a Command Prompt or PowerShell terminal in the folder where you downloaded and unzip the `bb10mt.exe` file. You can open the terminal by holding down the Shift key and right-clicking in the folder, then selecting "Open PowerShell window here".
-2. Run the following command. The `-c` flag tells the tool which path of the file you want to unpack.
+1. Open a Command Prompt or PowerShell terminal in the folder where you downloaded and extracted the `bb10mt.exe` file. You can open the terminal by holding down the Shift key and right-clicking in the folder, then selecting "Open PowerShell window here".
+2. Run the following command. The `-c` flag tells the tool the path of the file you want to unpack.
 
 ```bash
 bb10mt.exe unpack -c "path\to\your\OS.signed"
@@ -66,7 +66,7 @@ Replace `"path\to\your\OS.signed"` with the actual path to your OS file. For exa
 
 ![Unpack command](./03.gif)
 
-**Fact:** You can drop the files directly into the terminal window if you using Windows Terminal.
+**Fact:** You can drop the files directly into the terminal window if you are using Windows Terminal.
 
 After you have unpacked the files, you will have a folder with the following files:
 
@@ -78,11 +78,11 @@ We only care about the `.ufs` file.
 
 This is the critical step where we disable the initial setup wizard.
 
-Do carefully if you don't want to do this again for N times.
+Proceed carefully if you don't want to repeat this process multiple times.
 
 1. Open your Hex Editor (I'm using [HxD](https://mh-nexus.de/en/hxd/)).
 
-2. Find the file with the `.ufs` extension then open it with the Hex Editor. You can drag and drop the file into the Hex Editor.
+2. Find the file with the `.ufs` extension and then open it with the Hex Editor. You can drag and drop the file into the Hex Editor.
 
 3. Press Ctrl+F, then search for the text string `autorun::1`.
 
@@ -100,7 +100,7 @@ Do carefully if you don't want to do this again for N times.
 
     ![Find autorun](./08.png)
 
-    Then change it to `0`, please note that it have two entries duplicated, you must change both of them:
+    Then change it to `0`, please note that there are two duplicate entries, you must change both of them:
 
     ![Change autorun](./09.gif)
 
@@ -141,7 +141,7 @@ With your patched OS file ready, the final step is to build a new Autoloader `.e
 1. Open **DBBT (Darcy's BlackBerry Tools)**. Remember to first replace its bundled `cap.exe` with the modified one from FerreiraPablo. That file should be in the same folder as the `DBBTool.exe` file.
 2. In the "Build Autoloader" tab, select your newly created **patched OS `.signed` file** and the original **Radio `.signed` file** that Sachesi created in Step 1 (if your device requires one) by clicking **...** button.
 3. Enter the name of the new Autoloader file.
-4. Click the "Build it\!" button.
+4. Click the "Build it!" button.
 5. DBBT will combine the files and create a new, fully functional Autoloader `.exe` in the same folder.
 
 ### Flashing Your Device
@@ -154,4 +154,4 @@ You now have a custom Autoloader that will bypass the setup screen.
 4. A command window will appear and the flashing process will begin. Do not unplug the device.
 5. Once complete, your device will reboot automatically and load directly into the home screen, completely skipping the initial setup.
 
-Congratulations\! You have successfully revived your BlackBerry device. Happy hacking\!
+Congratulations! You have successfully revived your BlackBerry device. Happy hacking!
