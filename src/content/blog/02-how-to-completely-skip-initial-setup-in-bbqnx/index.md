@@ -149,9 +149,8 @@ With your patched OS file ready, the final step is to build a new Autoloader `.e
 You now have a custom Autoloader that will bypass the setup screen.
 
 1. Turn off your BlackBerry device.
-2. Connect it to your computer via USB. As soon as you connect it, the device's LED should turn green, indicating it is in bootloader/fastboot mode.
-3. Run the new Autoloader `.exe` you just created.
-4. A command window will appear and the flashing process will begin. Do not unplug the device.
-5. Once complete, your device will reboot automatically and load directly into the home screen, completely skipping the initial setup.
+2. Run the new Autoloader `.exe` you just created.
+3. A command window will appear then connect it to your computer via USB. As soon as you connect it, the device's LED should turn green, indicating it is flashing.
+4. Once complete, your device will reboot automatically and load directly into the home screen, completely skipping the initial setup.
 
 Congratulations! You have successfully revived your BlackBerry device. Happy hacking!
